@@ -139,7 +139,7 @@ Planned screenshots include:
 A complete demonstration of the AWS implementation is available through the project demo video.
 
 **Demo video:**
-[Watch the AWS Project Demonstration](YOUR_VIDEO_LINK)
+[Watch the AWS Project Demonstration](https://youtu.be/9URUkkw36hk)
 
 > The demonstration video covers the practical AWS implementation performed as part of this project.
 
