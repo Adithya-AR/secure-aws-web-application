@@ -39,26 +39,44 @@ This project was developed as part of a technical seminar and includes both theo
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
-The project uses AWS networking components including a custom VPC, public and private subnets, an Internet Gateway, route tables, EC2 and an Application Load Balancer.
+### AWS Reference Architecture
 
-The architecture is designed to separate internet-facing components from application resources and provide controlled network access.
+The following diagram represents the general AWS reference architecture discussed in the seminar.
 
-### Architecture Components
+![AWS Reference Architecture](awsarchitecture.png)
 
-* Custom VPC
-* Public Subnets
-* Private Subnets
-* Internet Gateway
-* Route Tables
-* Linux-based EC2
-* Application Load Balancer
-* Security Groups
-* IAM
-* CloudWatch
+### Actual AWS Implementation
 
----
+The following diagram represents the AWS infrastructure that was actually configured and demonstrated as part of this project.
+
+![Actual AWS Implementation Architecture](actual-aws-architecture.png)
+
+### Implemented Components
+
+- Amazon VPC with CIDR `10.0.0.0/16`
+- Two subnets:
+  - `10.0.1.0/24`
+  - `10.0.2.0/24`
+- Internet Gateway
+- Route Tables
+- Ubuntu-based EC2 instance
+- Application Load Balancer (ALB)
+- Target Group
+- Auto Scaling Group
+- Security Groups
+- IAM Role for EC2
+- Amazon CloudWatch for monitoring and health observation
+
+### Not Used
+
+- NAT Gateway
+- DNS / Route 53
+
+
+
+
 
 ### AWS Architecture Diagram
 
