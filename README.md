@@ -2,9 +2,9 @@
 
 ## 📌 Project Overview
 
-This project demonstrates the deployment of a web application on Amazon Web Services (AWS) using Linux-based Amazon EC2 instances and Amazon VPC networking.
+This project demonstrates the deployment of a web application on Amazon Web Services (AWS) using a Linux-based Amazon EC2 instance and Amazon VPC networking.
 
-The project focuses on understanding how cloud infrastructure can be designed and configured to provide secure access, network isolation, traffic distribution, and basic monitoring.
+The project focuses on understanding how cloud infrastructure can be designed and configured to provide secure access, network connectivity, traffic distribution, and basic monitoring.
 
 This project was developed as part of a technical seminar and includes both theoretical concepts and a hands-on AWS implementation.
 
@@ -12,34 +12,35 @@ This project was developed as part of a technical seminar and includes both theo
 
 ## 🎯 Objectives
 
-* Understand the fundamentals of cloud computing and AWS.
-* Deploy a web application using a Linux-based EC2 instance.
-* Create and configure a custom VPC.
-* Configure public and private subnets.
-* Configure Internet Gateway and route tables.
-* Implement secure access using Security Groups and IAM.
-* Configure an Application Load Balancer (ALB) for traffic distribution.
-* Monitor the deployed infrastructure using AWS CloudWatch.
-* Gain practical experience with AWS cloud infrastructure.
+- Understand the fundamentals of cloud computing and AWS.
+- Deploy a web application using a Linux-based EC2 instance.
+- Create and configure a custom VPC.
+- Configure subnets, route tables, and an Internet Gateway.
+- Implement secure access using Security Groups and IAM.
+- Configure an Application Load Balancer (ALB) for application traffic.
+- Configure an Auto Scaling Group.
+- Monitor the deployed infrastructure using Amazon CloudWatch.
+- Gain practical experience with AWS cloud infrastructure and networking.
 
 ---
 
 ## ☁️ AWS Services Used
 
-| AWS Service               | Purpose                                                   |
-| ------------------------- | --------------------------------------------------------- |
-| Amazon EC2                | Hosts the web application on a Linux-based virtual server |
-| Amazon VPC                | Provides an isolated virtual network                      |
-| Internet Gateway          | Provides internet connectivity for the VPC                |
-| Route Tables              | Controls traffic routing within the VPC                   |
-| Security Groups           | Controls inbound and outbound traffic                     |
-| AWS IAM                   | Manages secure access and permissions                     |
-| Application Load Balancer | Distributes incoming application traffic                  |
-| Amazon CloudWatch         | Provides basic monitoring of the deployed resources       |
+| AWS Service | Purpose |
+|---|---|
+| Amazon EC2 | Hosts the web application on an Ubuntu Linux server |
+| Amazon VPC | Provides an isolated virtual network |
+| Internet Gateway | Provides internet connectivity for the VPC |
+| Route Tables | Controls network traffic routing |
+| Security Groups | Controls inbound and outbound network traffic |
+| AWS IAM | Manages access and permissions |
+| Application Load Balancer | Handles and distributes incoming application traffic |
+| Auto Scaling | Provides automated management of EC2 capacity |
+| Amazon CloudWatch | Provides monitoring of the deployed infrastructure |
 
 ---
 
-## Architecture
+## 🏗️ Architecture
 
 ### AWS Reference Architecture
 
@@ -47,11 +48,11 @@ The following diagram represents the general AWS reference architecture discusse
 
 ![AWS Reference Architecture](awsarchitecture.png)
 
-### Actual AWS Implementation
+### Actual AWS Implementation Architecture
 
 The following diagram represents the AWS infrastructure that was actually configured and demonstrated as part of this project.
 
-![Actual AWS Implementation Architecture](actual-aws-architecture.png.png)
+![Actual AWS Implementation Architecture](actual-aws-architecture.png)
 
 ### Implemented Components
 
@@ -59,6 +60,7 @@ The following diagram represents the AWS infrastructure that was actually config
 - Two subnets:
   - `10.0.1.0/24`
   - `10.0.2.0/24`
+- Availability Zones
 - Internet Gateway
 - Route Tables
 - Ubuntu-based EC2 instance
@@ -67,21 +69,14 @@ The following diagram represents the AWS infrastructure that was actually config
 - Auto Scaling Group
 - Security Groups
 - IAM Role for EC2
-- Amazon CloudWatch for monitoring and health observation
+- Amazon CloudWatch
 
 ### Not Used
 
 - NAT Gateway
 - DNS / Route 53
 
-
-
-
-
-### AWS Architecture Diagram
-
-![AWS Architecture](awsarchitecture.png)
-
+---
 
 ## 🚀 Implementation
 
@@ -89,33 +84,109 @@ The following diagram represents the AWS infrastructure that was actually config
 
 A static web application was deployed on an Ubuntu-based Amazon EC2 instance.
 
+The EC2 instance was configured with the required network access and security settings for hosting the application.
+
 ### 2. VPC Configuration
 
-A custom VPC was created with public and private subnets to provide network isolation and controlled communication.
+A custom VPC was created using the CIDR block:
+
+`10.0.0.0/16`
+
+Two subnets were configured:
+
+- `10.0.1.0/24`
+- `10.0.2.0/24`
+
+The subnets were associated with Availability Zones to provide the required network infrastructure for the deployment.
 
 ### 3. Internet Gateway
 
-An Internet Gateway was configured to provide external connectivity for resources that require internet access.
+An Internet Gateway was created and attached to the custom VPC to provide internet connectivity.
 
 ### 4. Route Tables
 
-Route tables were configured to control traffic between the subnets and provide the required internet connectivity.
+Route tables were configured to control network traffic and provide the required connectivity between the VPC resources and the internet.
 
 ### 5. Security Groups
 
-Security Groups were configured to control network traffic and provide secure access to the deployed resources.
+Security Groups were configured to control network traffic to the EC2 instance and application.
+
+The configured traffic included:
+
+- SSH
+- HTTP
+- HTTPS
+- TCP-based application traffic
 
 ### 6. IAM
 
-IAM roles and permissions were configured to provide controlled access to AWS resources.
+An IAM role was created for the EC2 instance to provide controlled access to AWS services.
+
+The IAM configuration included permissions related to:
+
+- EC2
+- CloudWatch monitoring
 
 ### 7. Application Load Balancer
 
-An Application Load Balancer was configured to distribute incoming application traffic.
+An Application Load Balancer (ALB) was configured to handle incoming application traffic.
 
-### 8. CloudWatch
+A Target Group was created and associated with the application infrastructure.
 
-AWS CloudWatch was enabled for basic monitoring of the deployed infrastructure and application performance.
+### 8. Auto Scaling
+
+An Auto Scaling Group was created as part of the AWS infrastructure configuration.
+
+This provides the foundation for automatically managing EC2 capacity based on the configured scaling settings.
+
+### 9. CloudWatch Monitoring
+
+Amazon CloudWatch was configured to monitor the deployed infrastructure and observe the health and performance of the application environment.
+
+---
+
+## ✨ Project Highlights
+
+- Designed and configured a custom Amazon VPC using CIDR `10.0.0.0/16`.
+- Created two subnets across Availability Zones.
+- Configured an Internet Gateway and route tables.
+- Deployed a static web application on an Ubuntu-based EC2 instance.
+- Configured Security Groups for controlled network access.
+- Created an IAM role for the EC2 instance.
+- Configured an Application Load Balancer and Target Group.
+- Created an Auto Scaling Group.
+- Configured Amazon CloudWatch for monitoring.
+- Gained practical experience with AWS networking and cloud infrastructure.
+
+---
+
+## 🛠️ Technologies & AWS Services
+
+**Cloud Platform:**  
+Amazon Web Services (AWS)
+
+**AWS Services:**
+
+- Amazon VPC
+- Amazon EC2
+- Application Load Balancer
+- Auto Scaling
+- IAM
+- Amazon CloudWatch
+- Internet Gateway
+- Route Tables
+- Security Groups
+
+**Operating System:**  
+Ubuntu Linux
+
+**Networking:**
+
+- IPv4
+- TCP
+- HTTP
+- HTTPS
+- SSH
 
 ---
 
@@ -123,32 +194,33 @@ AWS CloudWatch was enabled for basic monitoring of the deployed infrastructure a
 
 The project incorporates several AWS security mechanisms:
 
-* VPC network isolation
-* Security Groups
-* IAM roles and permissions
-* Private subnets
-* Controlled routing
-* Restricted network access
+- VPC network isolation
+- Security Groups
+- IAM roles and permissions
+- Controlled routing
+- Restricted network access
 
-These components help reduce unnecessary exposure of application resources to the public internet.
+Security Groups were configured to allow only the required types of traffic for accessing and testing the deployed application.
 
 ---
 
 ## 📸 Screenshots
 
-Screenshots of the AWS implementation will be added to this repository to demonstrate the configuration and deployment process.
+The AWS implementation can be demonstrated through the project demonstration video.
 
-Planned screenshots include:
+Potential screenshots for documenting the implementation include:
 
-* VPC configuration
-* Subnets
-* Route tables
-* EC2 instance
-* Security Groups
-* IAM
-* Application Load Balancer
-* CloudWatch
-* Deployed web application
+- VPC configuration
+- Subnets
+- Route tables
+- EC2 instance
+- Security Groups
+- IAM role
+- Application Load Balancer
+- Target Group
+- Auto Scaling Group
+- CloudWatch
+- Deployed web application
 
 ---
 
@@ -156,7 +228,8 @@ Planned screenshots include:
 
 A complete demonstration of the AWS implementation is available through the project demo video.
 
-**Demo video:**
+**Demo Video:**
+
 [Watch the AWS Project Demonstration](https://youtu.be/9URUkkw36hk)
 
 > The demonstration video covers the practical AWS implementation performed as part of this project.
@@ -167,16 +240,19 @@ A complete demonstration of the AWS implementation is available through the proj
 
 Through this project, I gained hands-on experience with:
 
-* AWS cloud infrastructure
-* VPC networking
-* Public and private subnets
-* EC2 and Linux-based server deployment
-* Route tables and Internet Gateway
-* AWS Security Groups
-* IAM
-* Application Load Balancer
-* CloudWatch monitoring
-* Basic cloud security and infrastructure design
+- AWS cloud infrastructure
+- VPC networking
+- IPv4 networking
+- Subnets and Availability Zones
+- EC2 and Linux-based server deployment
+- Route tables and Internet Gateway
+- AWS Security Groups
+- IAM roles and permissions
+- Application Load Balancer
+- Target Groups
+- Auto Scaling
+- CloudWatch monitoring
+- Basic cloud security and infrastructure design
 
 ---
 
@@ -184,10 +260,10 @@ Through this project, I gained hands-on experience with:
 
 The following improvements can be explored in future versions:
 
-* Enable HTTPS using AWS Certificate Manager.
-* Automate infrastructure setup using Bash scripts.
-* Implement CI/CD using GitHub Actions or AWS CodeDeploy.
-* Explore serverless deployment using AWS Lambda and API Gateway.
+- Enable HTTPS using AWS Certificate Manager.
+- Automate infrastructure setup using Bash scripts.
+- Implement CI/CD using GitHub Actions or AWS CodeDeploy.
+- Explore serverless deployment using AWS Lambda and API Gateway.
 
 ---
 
@@ -205,5 +281,5 @@ The presentation covers cloud computing fundamentals, AWS concepts, deployment m
 
 **Adithya Raj**
 
-B.Tech Computer Science and Engineering
+B.Tech Computer Science and Engineering  
 College of Engineering Munnar
