@@ -60,6 +60,11 @@ The architecture is designed to separate internet-facing components from applica
 
 ---
 
+### AWS Architecture Diagram
+
+![AWS Architecture](awsarchitecture.png)
+
+
 ## 🚀 Implementation
 
 ### 1. EC2 Deployment
