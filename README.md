@@ -51,7 +51,7 @@ The following diagram represents the general AWS reference architecture discusse
 
 The following diagram represents the AWS infrastructure that was actually configured and demonstrated as part of this project.
 
-![Actual AWS Implementation Architecture](actual-aws-architecture.png)
+![Actual AWS Implementation Architecture](actual-aws-architecture.png.png)
 
 ### Implemented Components
 
