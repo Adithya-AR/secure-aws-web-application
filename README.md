@@ -1,2 +1,2 @@
-# secure-aws-web-application
-Secure and scalable web application deployment on AWS using Linux-based EC2 and VPC networking.
+# secure-aws-web-application-deployment
+Hands-on AWS deployment of a static web application using Linux-based EC2, VPC networking, ALB, IAM and CloudWatch.
